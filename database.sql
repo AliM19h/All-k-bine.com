@@ -1,0 +1,31 @@
+CREATE DATABASE IF NOT EXISTS allo_kbine;
+USE allo_kbine;
+
+CREATE TABLE IF NOT EXISTS orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    client_name VARCHAR(100),
+    phone_number VARCHAR(20),
+    network VARCHAR(20),
+    amount VARCHAR(50),
+    status VARCHAR(20) DEFAULT 'En attente',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE IF NOT EXISTS admins (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL
+);
+
+INSERT INTO admins (username, password)
+VALUES ('admin', '$2y$10$eJt1XOVh8khqJAYRekXD0OyTqtHZP0/IZz0g8fH2gmE7tNhBWfPE6');
+
+CREATE TABLE orders (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  number VARCHAR(15) NOT NULL,
+  network ENUM('Orange','MTN','Moov') NOT NULL,
+  amount VARCHAR(50) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
